@@ -10,13 +10,21 @@ namespace PruebaOsiliaSoliss.Controllers
 {
     public class BusquedaController : Controller
     {
+        private fabricaEntities db = new fabricaEntities();
         // GET: Busqueda
         public ActionResult Index()
         {
-            ViewModel1 viewModel1 = new ViewModel1();
-            return View(viewModel1);
+            
+            return View(db.Categoria.ToList());
         }
 
-        
+        public ActionResult buscarcategoria(int id)
+        {
+
+            var queryProducto = from producto in db.Producto where producto.IdCategoria == id select producto;
+
+            return View(queryProducto);
+        }
+
     }
 }
