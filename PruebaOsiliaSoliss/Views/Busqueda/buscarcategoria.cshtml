@@ -1,0 +1,69 @@
+﻿@model PruebaOsiliaSoliss.Models.categoriaproducto
+
+@{
+    ViewBag.Title = "Buscar Por Categoria";
+}
+
+<h2>Buscar Por Categoria</h2>
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.producto.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producto.descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producto.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producto.stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.producto.stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria.nombre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in model.producto)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idProducto }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idProducto }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idProducto })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.producto.idProducto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
